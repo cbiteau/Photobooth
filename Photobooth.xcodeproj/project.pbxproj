@@ -12,24 +12,11 @@
 		DC8D1CB51977B956001474DF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8D1CB41977B956001474DF /* main.m */; };
 		DC8D1CB91977B956001474DF /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = DC8D1CB71977B956001474DF /* Credits.rtf */; };
 		DC8D1CBC1977B956001474DF /* PhotoboothAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8D1CBB1977B956001474DF /* PhotoboothAppDelegate.m */; };
-		DC8D1CBF1977B956001474DF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC8D1CBD1977B956001474DF /* MainMenu.xib */; };
-		DC8D1CC21977B956001474DF /* Photobooth.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DC8D1CC01977B956001474DF /* Photobooth.xcdatamodeld */; };
 		DC8D1CC41977B956001474DF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC8D1CC31977B956001474DF /* Images.xcassets */; };
-		DC8D1CCB1977B956001474DF /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC8D1CCA1977B956001474DF /* XCTest.framework */; };
-		DC8D1CCC1977B956001474DF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC8D1CA81977B956001474DF /* Cocoa.framework */; };
-		DC8D1CD41977B956001474DF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DC8D1CD21977B956001474DF /* InfoPlist.strings */; };
-		DC8D1CD61977B956001474DF /* PhotoboothTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8D1CD51977B956001474DF /* PhotoboothTests.m */; };
+		DC8D1CE01977B96B001474DF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC8D1CDF1977B96B001474DF /* QuartzCore.framework */; };
+		DC8D1CE21977B976001474DF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC8D1CE11977B976001474DF /* AVFoundation.framework */; };
+		DC8D1CE41977B97B001474DF /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC8D1CE31977B97A001474DF /* CoreMedia.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		DC8D1CCD1977B956001474DF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DC8D1C9D1977B956001474DF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DC8D1CA41977B956001474DF;
-			remoteInfo = Photobooth;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		DC8D1CA51977B956001474DF /* Photobooth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photobooth.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,14 +31,11 @@
 		DC8D1CB81977B956001474DF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		DC8D1CBA1977B956001474DF /* PhotoboothAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoboothAppDelegate.h; sourceTree = "<group>"; };
 		DC8D1CBB1977B956001474DF /* PhotoboothAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoboothAppDelegate.m; sourceTree = "<group>"; };
-		DC8D1CBE1977B956001474DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		DC8D1CC11977B956001474DF /* Photobooth.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Photobooth.xcdatamodel; sourceTree = "<group>"; };
 		DC8D1CC31977B956001474DF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		DC8D1CC91977B956001474DF /* PhotoboothTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoboothTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC8D1CCA1977B956001474DF /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		DC8D1CD11977B956001474DF /* PhotoboothTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PhotoboothTests-Info.plist"; sourceTree = "<group>"; };
-		DC8D1CD31977B956001474DF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		DC8D1CD51977B956001474DF /* PhotoboothTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoboothTests.m; sourceTree = "<group>"; };
+		DC8D1CDF1977B96B001474DF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		DC8D1CE11977B976001474DF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		DC8D1CE31977B97A001474DF /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,16 +43,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC8D1CE41977B97B001474DF /* CoreMedia.framework in Frameworks */,
+				DC8D1CE21977B976001474DF /* AVFoundation.framework in Frameworks */,
+				DC8D1CE01977B96B001474DF /* QuartzCore.framework in Frameworks */,
 				DC8D1CA91977B956001474DF /* Cocoa.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DC8D1CC61977B956001474DF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DC8D1CCC1977B956001474DF /* Cocoa.framework in Frameworks */,
-				DC8D1CCB1977B956001474DF /* XCTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,7 +57,6 @@
 			isa = PBXGroup;
 			children = (
 				DC8D1CAE1977B956001474DF /* Photobooth */,
-				DC8D1CCF1977B956001474DF /* PhotoboothTests */,
 				DC8D1CA71977B956001474DF /* Frameworks */,
 				DC8D1CA61977B956001474DF /* Products */,
 			);
@@ -89,7 +66,6 @@
 			isa = PBXGroup;
 			children = (
 				DC8D1CA51977B956001474DF /* Photobooth.app */,
-				DC8D1CC91977B956001474DF /* PhotoboothTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -97,6 +73,9 @@
 		DC8D1CA71977B956001474DF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DC8D1CE31977B97A001474DF /* CoreMedia.framework */,
+				DC8D1CE11977B976001474DF /* AVFoundation.framework */,
+				DC8D1CDF1977B96B001474DF /* QuartzCore.framework */,
 				DC8D1CA81977B956001474DF /* Cocoa.framework */,
 				DC8D1CCA1977B956001474DF /* XCTest.framework */,
 				DC8D1CAA1977B956001474DF /* Other Frameworks */,
@@ -119,9 +98,7 @@
 			children = (
 				DC8D1CBA1977B956001474DF /* PhotoboothAppDelegate.h */,
 				DC8D1CBB1977B956001474DF /* PhotoboothAppDelegate.m */,
-				DC8D1CBD1977B956001474DF /* MainMenu.xib */,
 				DC8D1CC31977B956001474DF /* Images.xcassets */,
-				DC8D1CC01977B956001474DF /* Photobooth.xcdatamodeld */,
 				DC8D1CAF1977B956001474DF /* Supporting Files */,
 			);
 			path = Photobooth;
@@ -135,24 +112,6 @@
 				DC8D1CB41977B956001474DF /* main.m */,
 				DC8D1CB61977B956001474DF /* Photobooth-Prefix.pch */,
 				DC8D1CB71977B956001474DF /* Credits.rtf */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		DC8D1CCF1977B956001474DF /* PhotoboothTests */ = {
-			isa = PBXGroup;
-			children = (
-				DC8D1CD51977B956001474DF /* PhotoboothTests.m */,
-				DC8D1CD01977B956001474DF /* Supporting Files */,
-			);
-			path = PhotoboothTests;
-			sourceTree = "<group>";
-		};
-		DC8D1CD01977B956001474DF /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				DC8D1CD11977B956001474DF /* PhotoboothTests-Info.plist */,
-				DC8D1CD21977B956001474DF /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -177,24 +136,6 @@
 			productReference = DC8D1CA51977B956001474DF /* Photobooth.app */;
 			productType = "com.apple.product-type.application";
 		};
-		DC8D1CC81977B956001474DF /* PhotoboothTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DC8D1CDC1977B956001474DF /* Build configuration list for PBXNativeTarget "PhotoboothTests" */;
-			buildPhases = (
-				DC8D1CC51977B956001474DF /* Sources */,
-				DC8D1CC61977B956001474DF /* Frameworks */,
-				DC8D1CC71977B956001474DF /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				DC8D1CCE1977B956001474DF /* PBXTargetDependency */,
-			);
-			name = PhotoboothTests;
-			productName = PhotoboothTests;
-			productReference = DC8D1CC91977B956001474DF /* PhotoboothTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -204,11 +145,6 @@
 				CLASSPREFIX = Photobooth;
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Charly Biteau";
-				TargetAttributes = {
-					DC8D1CC81977B956001474DF = {
-						TestTargetID = DC8D1CA41977B956001474DF;
-					};
-				};
 			};
 			buildConfigurationList = DC8D1CA01977B956001474DF /* Build configuration list for PBXProject "Photobooth" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -224,7 +160,6 @@
 			projectRoot = "";
 			targets = (
 				DC8D1CA41977B956001474DF /* Photobooth */,
-				DC8D1CC81977B956001474DF /* PhotoboothTests */,
 			);
 		};
 /* End PBXProject section */
@@ -237,15 +172,6 @@
 				DC8D1CB31977B956001474DF /* InfoPlist.strings in Resources */,
 				DC8D1CC41977B956001474DF /* Images.xcassets in Resources */,
 				DC8D1CB91977B956001474DF /* Credits.rtf in Resources */,
-				DC8D1CBF1977B956001474DF /* MainMenu.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DC8D1CC71977B956001474DF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DC8D1CD41977B956001474DF /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,27 +184,10 @@
 			files = (
 				DC8D1CBC1977B956001474DF /* PhotoboothAppDelegate.m in Sources */,
 				DC8D1CB51977B956001474DF /* main.m in Sources */,
-				DC8D1CC21977B956001474DF /* Photobooth.xcdatamodeld in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DC8D1CC51977B956001474DF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DC8D1CD61977B956001474DF /* PhotoboothTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		DC8D1CCE1977B956001474DF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DC8D1CA41977B956001474DF /* Photobooth */;
-			targetProxy = DC8D1CCD1977B956001474DF /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		DC8D1CB11977B956001474DF /* InfoPlist.strings */ = {
@@ -297,22 +206,6 @@
 			name = Credits.rtf;
 			sourceTree = "<group>";
 		};
-		DC8D1CBD1977B956001474DF /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DC8D1CBE1977B956001474DF /* Base */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-		DC8D1CD21977B956001474DF /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DC8D1CD31977B956001474DF /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -320,10 +213,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_ENABLE_MODULES = NO;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -333,6 +226,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -348,7 +242,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
@@ -358,10 +252,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_ENABLE_MODULES = NO;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -372,7 +266,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_NS_ASSERTIONS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -381,7 +275,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -389,11 +283,13 @@
 		DC8D1CDA1977B956001474DF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				COMBINE_HIDPI_IMAGES = YES;
+				COMBINE_HIDPI_IMAGES = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Photobooth/Photobooth-Prefix.pch";
 				INFOPLIST_FILE = "Photobooth/Photobooth-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -402,53 +298,15 @@
 		DC8D1CDB1977B956001474DF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				COMBINE_HIDPI_IMAGES = YES;
+				COMBINE_HIDPI_IMAGES = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Photobooth/Photobooth-Prefix.pch";
 				INFOPLIST_FILE = "Photobooth/Photobooth-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
-		DC8D1CDD1977B956001474DF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Photobooth.app/Contents/MacOS/Photobooth";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Photobooth/Photobooth-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "PhotoboothTests/PhotoboothTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		DC8D1CDE1977B956001474DF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Photobooth.app/Contents/MacOS/Photobooth";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Photobooth/Photobooth-Prefix.pch";
-				INFOPLIST_FILE = "PhotoboothTests/PhotoboothTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
 		};
@@ -471,29 +329,9 @@
 				DC8D1CDB1977B956001474DF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		DC8D1CDC1977B956001474DF /* Build configuration list for PBXNativeTarget "PhotoboothTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DC8D1CDD1977B956001474DF /* Debug */,
-				DC8D1CDE1977B956001474DF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		DC8D1CC01977B956001474DF /* Photobooth.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				DC8D1CC11977B956001474DF /* Photobooth.xcdatamodel */,
-			);
-			currentVersion = DC8D1CC11977B956001474DF /* Photobooth.xcdatamodel */;
-			path = Photobooth.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = DC8D1C9D1977B956001474DF /* Project object */;
 }

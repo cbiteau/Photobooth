@@ -8,175 +8,131 @@
 
 #import "PhotoboothAppDelegate.h"
 
+
+#define DEFAULT_FRAMES_PER_SECOND	5.0
+
 @implementation PhotoboothAppDelegate
 
-@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
-@synthesize managedObjectModel = _managedObjectModel;
-@synthesize managedObjectContext = _managedObjectContext;
+@synthesize outputURL;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    // Insert code here to initialize your application
-}
+    frameDuration = CMTimeMakeWithSeconds(1. / DEFAULT_FRAMES_PER_SECOND, 90000);
+    
+    NSError *error = nil;
+    
+    /*CALayer *imageLayer = [previewCellView layer];
+    [imageLayer setBackgroundColor:CGColorGetConstantColor(kCGColorBlack)];*/
+    
+    session = [AVCaptureSession new];
+	[session setSessionPreset:AVCaptureSessionPresetPhoto];
+    
+    NSMenu *newMenu;
+    NSMenuItem *newItem;
+    
+    // Add the submenu
+    /*newItem = [[NSMenuItem allocWithZone:[NSMenu menuZone]] initWithTitle:@"Caméra" action:NULL keyEquivalent:@""];
+    newMenu = [[NSMenu allocWithZone:[NSMenu menuZone]] initWithTitle:@"Caméra"];
+    [newItem setSubmenu:newMenu];
+    [[NSApp mainMenu] insertItem:newItem atIndex:[[NSApp mainMenu] indexOfItemWithTitle:@"Help"]];*/
+    
+    // Add some tricky items
+    Boolean initCam = FALSE;
 
-// Returns the directory the application uses to store the Core Data store file. This code uses a directory named "Charly-Biteau.Photobooth" in the user's Application Support directory.
-- (NSURL *)applicationFilesDirectory
-{
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSURL *appSupportURL = [[fileManager URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask] lastObject];
-    return [appSupportURL URLByAppendingPathComponent:@"Charly-Biteau.Photobooth"];
-}
-
-// Creates if necessary and returns the managed object model for the application.
-- (NSManagedObjectModel *)managedObjectModel
-{
-    if (_managedObjectModel) {
-        return _managedObjectModel;
-    }
+    
+	// Select a video device, make an input
+	for (AVCaptureDevice *device in [AVCaptureDevice devices]) {
+		if (([device hasMediaType:AVMediaTypeVideo] || [device hasMediaType:AVMediaTypeMuxed])
+            ) {
+           /* newItem = [[NSMenuItem allocWithZone:[NSMenu menuZone]] initWithTitle:[device localizedName] action:NULL keyEquivalent:@""];
+            [newItem setRepresentedObject:device];
+            [newItem setTarget:self];
+            [newItem setAction:@selector(changeCamera:)];
+            [newMenu addItem:newItem];
+            if(!initCam)
+            {
+                [newItem setState:NSOnState];*/
+                
+                AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error:&error];
+                if (error) {
+                    [session release];
+                    NSLog(@"deviceInputWithDevice failed with error %@", [error localizedDescription]);
+                }
+                if ([session canAddInput:input])
+                    [session addInput:input];
+                
+               /* initCam = TRUE;
+            }*/
+            break;
+		}
+	}
+    
+	// Make a still image output
+	stillImageOutput = [AVCaptureStillImageOutput new];
+	if ([session canAddOutput:stillImageOutput])
+		[session addOutput:stillImageOutput];
 	
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Photobooth" withExtension:@"momd"];
-    _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
-    return _managedObjectModel;
+	// Make a preview layer so we can see the visual output of an AVCaptureSession
+	previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:session];
+	[previewLayer setVideoGravity:AVLayerVideoGravityResizeAspect];
+	[previewLayer setFrame:[previewView bounds]];
+	[[previewLayer connection] setAutomaticallyAdjustsVideoMirroring:NO];
+	[[previewLayer connection] setVideoMirrored:YES];
+    
+    // add the preview layer to the hierarchy
+	CALayer *rootLayer = [previewView layer];
+	[rootLayer setBackgroundColor:CGColorGetConstantColor(kCGColorBlack)];
+	[rootLayer addSublayer:previewLayer];
+	
+    // start the capture session running, note this is an async operation
+    // status is provided via notifications such as AVCaptureSessionDidStartRunningNotification/AVCaptureSessionDidStopRunningNotification
+    [session startRunning];
+
 }
 
-// Returns the persistent store coordinator for the application. This implementation creates and return a coordinator, having added the store for the application to it. (The directory for the store is created, if necessary.)
-- (NSPersistentStoreCoordinator *)persistentStoreCoordinator
-{
-    if (_persistentStoreCoordinator) {
-        return _persistentStoreCoordinator;
-    }
+- (void)changeCamera:(id)sender {
+
+    AVCaptureDevice *device = [(NSMenuItem*) sender representedObject];
     
-    NSManagedObjectModel *mom = [self managedObjectModel];
-    if (!mom) {
-        NSLog(@"%@:%@ No model to generate a store from", [self class], NSStringFromSelector(_cmd));
-        return nil;
-    }
-    
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSURL *applicationFilesDirectory = [self applicationFilesDirectory];
     NSError *error = nil;
-    
-    NSDictionary *properties = [applicationFilesDirectory resourceValuesForKeys:@[NSURLIsDirectoryKey] error:&error];
-    
-    if (!properties) {
-        BOOL ok = NO;
-        if ([error code] == NSFileReadNoSuchFileError) {
-            ok = [fileManager createDirectoryAtPath:[applicationFilesDirectory path] withIntermediateDirectories:YES attributes:nil error:&error];
-        }
-        if (!ok) {
-            [[NSApplication sharedApplication] presentError:error];
-            return nil;
-        }
-    } else {
-        if (![properties[NSURLIsDirectoryKey] boolValue]) {
-            // Customize and localize this error.
-            NSString *failureDescription = [NSString stringWithFormat:@"Expected a folder to store application data, found a file (%@).", [applicationFilesDirectory path]];
-            
-            NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-            [dict setValue:failureDescription forKey:NSLocalizedDescriptionKey];
-            error = [NSError errorWithDomain:@"YOUR_ERROR_DOMAIN" code:101 userInfo:dict];
-            
-            [[NSApplication sharedApplication] presentError:error];
-            return nil;
-        }
+    [session stopRunning];
+    AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error:&error];
+    if (error) {
+        NSLog(@"deviceInputWithDevice failed with error %@", [error localizedDescription]);
     }
+    if ([session canAddInput:input])
+        [session addInput:input];
     
-    NSURL *url = [applicationFilesDirectory URLByAppendingPathComponent:@"Photobooth.storedata"];
-    NSPersistentStoreCoordinator *coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:mom];
-    if (![coordinator addPersistentStoreWithType:NSXMLStoreType configuration:nil URL:url options:nil error:&error]) {
-        [[NSApplication sharedApplication] presentError:error];
-        return nil;
+    [session startRunning];
+    
+    NSMenu* menuSel = [(NSMenuItem*) sender menu];
+    for (NSMenuItem* menuItem in [menuSel itemArray])
+    {
+        [menuItem setState:NSOffState];
     }
-    _persistentStoreCoordinator = coordinator;
-    
-    return _persistentStoreCoordinator;
+    [(NSMenuItem*) sender setState:NSOnState];
 }
 
-// Returns the managed object context for the application (which is already bound to the persistent store coordinator for the application.) 
-- (NSManagedObjectContext *)managedObjectContext
+- (void)windowDidResize:(NSNotification *)notification
 {
-    if (_managedObjectContext) {
-        return _managedObjectContext;
-    }
-    
-    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
-    if (!coordinator) {
-        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-        [dict setValue:@"Failed to initialize the store" forKey:NSLocalizedDescriptionKey];
-        [dict setValue:@"There was an error building up the data file." forKey:NSLocalizedFailureReasonErrorKey];
-        NSError *error = [NSError errorWithDomain:@"YOUR_ERROR_DOMAIN" code:9999 userInfo:dict];
-        [[NSApplication sharedApplication] presentError:error];
-        return nil;
-    }
-    _managedObjectContext = [[NSManagedObjectContext alloc] init];
-    [_managedObjectContext setPersistentStoreCoordinator:coordinator];
-
-    return _managedObjectContext;
+    [previewLayer setFrame:[previewView bounds]];
 }
 
-// Returns the NSUndoManager for the application. In this case, the manager returned is that of the managed object context for the application.
-- (NSUndoManager *)windowWillReturnUndoManager:(NSWindow *)window
+- (void)windowWillClose:(NSNotification *)notification
 {
-    return [[self managedObjectContext] undoManager];
-}
-
-// Performs the save action for the application, which is to send the save: message to the application's managed object context. Any encountered errors are presented to the user.
-- (IBAction)saveAction:(id)sender
-{
-    NSError *error = nil;
-    
-    if (![[self managedObjectContext] commitEditing]) {
-        NSLog(@"%@:%@ unable to commit editing before saving", [self class], NSStringFromSelector(_cmd));
-    }
-    
-    if (![[self managedObjectContext] save:&error]) {
-        [[NSApplication sharedApplication] presentError:error];
-    }
+    /*[session stopRunning];
+	[previewLayer removeFromSuperlayer];
+	[previewLayer setSession:nil];
+    [previewLayer release];
+    [stillImageOutput release];
+    [session release];*/
+    [NSApp terminate:[NSApp class]];
 }
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender
 {
     // Save changes in the application's managed object context before the application terminates.
     
-    if (!_managedObjectContext) {
-        return NSTerminateNow;
-    }
-    
-    if (![[self managedObjectContext] commitEditing]) {
-        NSLog(@"%@:%@ unable to commit editing to terminate", [self class], NSStringFromSelector(_cmd));
-        return NSTerminateCancel;
-    }
-    
-    if (![[self managedObjectContext] hasChanges]) {
-        return NSTerminateNow;
-    }
-    
-    NSError *error = nil;
-    if (![[self managedObjectContext] save:&error]) {
-
-        // Customize this code block to include application-specific recovery steps.              
-        BOOL result = [sender presentError:error];
-        if (result) {
-            return NSTerminateCancel;
-        }
-
-        NSString *question = NSLocalizedString(@"Could not save changes while quitting. Quit anyway?", @"Quit without saves error question message");
-        NSString *info = NSLocalizedString(@"Quitting now will lose any changes you have made since the last successful save", @"Quit without saves error question info");
-        NSString *quitButton = NSLocalizedString(@"Quit anyway", @"Quit anyway button title");
-        NSString *cancelButton = NSLocalizedString(@"Cancel", @"Cancel button title");
-        NSAlert *alert = [[NSAlert alloc] init];
-        [alert setMessageText:question];
-        [alert setInformativeText:info];
-        [alert addButtonWithTitle:quitButton];
-        [alert addButtonWithTitle:cancelButton];
-
-        NSInteger answer = [alert runModal];
-        
-        if (answer == NSAlertAlternateReturn) {
-            return NSTerminateCancel;
-        }
-    }
-
     return NSTerminateNow;
 }
 

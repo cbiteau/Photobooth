@@ -7,15 +7,30 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <AppKit/AppKit.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface PhotoboothAppDelegate : NSObject <NSApplicationDelegate>
+{
+    IBOutlet NSView *previewView;
+    IBOutlet NSImageCell *previewCell;
+    IBOutlet NSImageView *previewCellView;
+	AVCaptureSession *session;
+    AVCaptureVideoPreviewLayer *previewLayer;
+	AVCaptureStillImageOutput *stillImageOutput;
+	BOOL started;
+	NSURL *outputURL;
+	AVAssetWriter *assetWriter;
+	AVAssetWriterInput *videoInput;
+	CMTime frameDuration;
+	CMTime nextPresentationTime;
+
+}
 
 @property (assign) IBOutlet NSWindow *window;
+@property (nonatomic) float framesPerSecond;
+@property (retain) NSURL *outputURL;
 
-@property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
-@property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
-@property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-
-- (IBAction)saveAction:(id)sender;
+- (void)windowDidResize:(NSNotification *)notification;
 
 @end
